@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { listarPokemon, obtenerDetallePokemon, listarTipos } from '../controllers/pokemonControlador.js';
+import cacheMiddleware from '../middlewares/cache.js';
 
 const router = Router();
 
@@ -13,4 +14,3 @@ router.get('/pokemon/:id', cacheMiddleware, obtenerDetallePokemon);
 router.get('/tipos', cacheMiddleware, listarTipos);
 
 export default router;
-
