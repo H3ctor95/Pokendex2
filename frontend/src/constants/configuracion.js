@@ -1,8 +1,14 @@
 // Opciones de paginación disponibles
 export const OPCIONES_TAMANO_PAGINA = [10, 30, 50];
 
-// URL base del backend (nunca apuntar directo a PokeAPI)
-export const API_BASE_URL = 'http://localhost:3001/api';
+// URL base del backend (dinámica según el entorno)
+export const API_BASE_URL = (
+  typeof window !== 'undefined' &&
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:')
+)
+  ? 'http://localhost:3001/api'
+  : (import.meta.env.VITE_API_BASE_URL || '/api');
+
 
 // Imagen fallback si falla el sprite
 export const IMAGEN_FALLBACK = 'https://via.placeholder.com/96x96?text=?';
